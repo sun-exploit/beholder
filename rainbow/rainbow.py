@@ -187,9 +187,9 @@ class Rainbow:
                 epoch_mtime = 0
                 file_md5 = "no_signature"
 
-            if hostname not in redis_resource.mtime:
-                redis_resource.mtime[hostname] = epoch_mtime
             if self.cached:
+                if hostname not in redis_resource.mtime:
+                    redis_resource.mtime[hostname] = epoch_mtime
                 redis_resource.resources[hostname] = result
                 continue
 
